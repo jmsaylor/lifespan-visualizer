@@ -19,7 +19,7 @@ const EntireLife = (props) => {
     arr = arr.map((week, idx) => {
       return (
         <Box
-          johnStyle={idx < props.age * 52 ? backgroundLived : backgroundFuture}
+          background={idx < props.age * 52 ? backgroundLived : backgroundFuture}
         />
       );
     });
