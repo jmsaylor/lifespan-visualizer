@@ -1,8 +1,11 @@
 import React from "react";
 
 const Box = (props) => {
-  console.log(props);
-  return <div className='box'>box</div>;
+  return (
+    <div className='box' style={props.johnStyle}>
+      1
+    </div>
+  );
 };
 
 export default Box;
