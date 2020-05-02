@@ -18,10 +18,13 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={(e) => this.handleSubmit(e)}>
-        <input type='text' onChange={(e) => this.handleChange(e)} />
-        <button type='submit'>Submit</button>
-      </form>
+      <div className='form'>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <input type='text' onChange={(e) => this.handleChange(e)} />
+          <button type='submit'>Submit</button>
+        </form>
+        <p>Enter you Age</p>
+      </div>
     );
   }
 }
