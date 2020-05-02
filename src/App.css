@@ -7,6 +7,18 @@
   pointer-events: none;
 }
 
+.box {
+  width: 3vw;
+  /* padding: 10px 10px 10px 10px; */
+  margin: 3px 3px 3px 3px;
+  background-color: #61dafb;
+}
+
+.EntireLife {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
