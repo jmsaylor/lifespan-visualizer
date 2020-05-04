@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import "./App.css";
 import EntireLife from "./components/EntireLife";
 import Form from "./components/Form";
-import EXIF from "exif-js";
-import pic from "./img/skybeach.jpg";
-// import fs from "fs";
+import blueimp from "blueimp-load-image";
+// import pic from "./img/skybeach.jpg";
 
 class App extends Component {
   constructor(props) {
     super(props);
     const age = 29;
-    let arr = [...Array(age)].map((elem, idx) => {
-      return { id: idx, photos: [] };
+    let arr = [...Array(age * 52)].map((elem, idx) => {
+      return {
+        id: idx,
+        photos: [],
+        startDate: null,
+      };
     });
     this.state = {
       lifespan: 75,
@@ -26,30 +29,33 @@ class App extends Component {
     });
   };
 
-  getPhotoData = (img) => {
-    // fs.readFile("img", (err, data) => {
-    //   img = data;
-    // });
-    // console.log(img);
-    // console.log(EXIF);
-    // let reader = new FileReader();
-    // let blob = new Blob(img);
-    // img = reader.readAsText(img);
-    // reader.readAsDataURL();
-    var data = null;
-    var tags = null;
-    EXIF.getData(img, () => {
-      // let id = 1
-      // this.setState({
-      // })
-      console.log("1");
+  getPhotoData = (url) => {
+    blueimp(url, { meta: true }).then((exif) => {
+      const date = exif.exif["34665"]["36868"];
     });
-    return tags;
   };
 
   componentDidMount() {
-    let data = this.getPhotoData(pic);
-    console.log(data);
+    let { weeks } = this.state;
+    let date = new Date("01 / 01 / 1989");
+    for (let x = 0; x < weeks.length; x++) {
+      let day = date.getDate();
+      let month = date.getMonth();
+      let year = date.getYear();
+      day = date.getDate() + 7;
+      date = weeks[x].startDate = new Date(year, month, day);
+      console.log(day, month, year);
+    }
+
+    console.log(weeks);
+    let urls = [
+      "https://upload.wikimedia.org/wikipedia/commons/2/2f/Pied-winged_swallow_%28Hirundo_leucosoma%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/6/6a/White-tailed_tropicbird.jpg",
+    ];
+
+    urls.forEach((url) => {
+      this.getPhotoData(url);
+    });
   }
 
   render() {
