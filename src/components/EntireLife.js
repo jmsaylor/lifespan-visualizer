@@ -10,12 +10,12 @@ const EntireLife = (props) => {
     let backgroundFuture = {
       backgroundColor: "rgba(0,200,200, .2)",
     };
-    let arr = [...Array(num)];
-    console.log(arr);
+
+    // console.log(arr);
     // arr.forEach((element, idx) => {
     //   element.lived = idx < props.age * 52 ? true : false;
     // });
-
+    let arr = props.weeks;
     arr = arr.map((week, idx) => {
       return (
         <Box
