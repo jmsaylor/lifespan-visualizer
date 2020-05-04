@@ -2,7 +2,7 @@ import React from "react";
 import Box from "./Box";
 
 const EntireLife = (props) => {
-  console.log(props);
+  // console.log(props)
   const renderBoxes = (num) => {
     let backgroundLived = {
       backgroundColor: "rgba(0,255,200, .8)",
@@ -10,19 +10,16 @@ const EntireLife = (props) => {
     let backgroundFuture = {
       backgroundColor: "rgba(0,200,200, .2)",
     };
-
+    let arr = [...Array(props.lifespan * 52)];
     // console.log(arr);
-    // arr.forEach((element, idx) => {
-    //   element.lived = idx < props.age * 52 ? true : false;
-    // });
-    let arr = props.weeks;
-    arr = arr.map((week, idx) => {
+    arr = arr.map((element, idx) => {
       return (
         <Box
           background={idx < props.age * 52 ? backgroundLived : backgroundFuture}
         />
       );
     });
+    console.log(arr);
     return arr;
   };
   return <div className='EntireLife'>{renderBoxes(props.lifespan * 52)}</div>;

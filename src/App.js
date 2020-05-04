@@ -7,10 +7,14 @@ import EXIF from "exif-js";
 class App extends Component {
   constructor(props) {
     super(props);
+    const age = 29;
+    let arr = [...Array(age)].map((elem, idx) => {
+      return { id: idx };
+    });
     this.state = {
       lifespan: 75,
-      age: 29,
-      weeks: [],
+      age: age,
+      weeks: [...arr],
     };
   }
 
@@ -20,12 +24,7 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
-    let arr = [...Array(this.state.age)].map((idx) => {
-      return { id: idx };
-    });
-    console.log(arr);
-  }
+  componentDidMount() {}
 
   render() {
     return (
