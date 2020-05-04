@@ -16,10 +16,11 @@ const EntireLife = (props) => {
       return (
         <Box
           background={idx < props.age * 52 ? backgroundLived : backgroundFuture}
+          id={idx}
         />
       );
     });
-    console.log(arr);
+    // console.log(arr);
     return arr;
   };
   return <div className='EntireLife'>{renderBoxes(props.lifespan * 52)}</div>;
